@@ -100,13 +100,7 @@ a {
   display: contents;
 }
 
-.brand {
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-size: 1.05rem;
-}
+\.brand {`n  display: inline-flex;`n  align-items: center;`n  justify-content: center;`n  width: 48px;`n  height: 48px;`n  border-radius: 16px;`n  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;`n  font-weight: 600;`n  font-size: 1.3rem;`n  letter-spacing: 0.05em;`n  color: var(--color-text);`n  background: linear-gradient(140deg, rgba(255, 255, 255, 0.9), rgba(134, 197, 255, 0.32));`n  border: 1px solid rgba(255, 255, 255, 0.65);`n  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.6);`n  text-transform: uppercase;`n}`n`n.logo-mark {`n  line-height: 1;`n}`n`n.brand:focus-visible {`n  outline: 2px solid rgba(10, 132, 255, 0.4);`n  outline-offset: 4px;`n}`n
 
 nav ul {
   list-style: none;
@@ -612,112 +606,6 @@ main {
   color: var(--color-text-soft);
 }
 
-.liquid-lab {
-  position: relative;
-}
-
-.liquid-head {
-  max-width: 620px;
-  margin: 0 auto 46px;
-  text-align: center;
-}
-
-.liquid-head h2 {
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: clamp(2rem, 3.2vw, 2.7rem);
-  margin-bottom: 12px;
-}
-
-.liquid-head p {
-  color: var(--color-text-soft);
-  margin: 0;
-}
-
-.liquid-viewport {
-  touch-action: pan-y;
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius-xl);
-  padding: 32px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: grab;
-}
-
-.liquid-viewport:active {
-  cursor: grabbing;
-}
-
-.liquid-track {
-  display: flex;
-  gap: 28px;
-  padding: 0 60px;
-  width: max-content;
-}
-
-.liquid-chip {
-  border: none;
-  border-radius: 999px;
-  padding: 16px 32px;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(15, 23, 42, 0.82);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(134, 197, 255, 0.28));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 12px 30px rgba(15, 23, 42, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  transition: transform var(--transition), box-shadow var(--transition), background 320ms ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.liquid-chip::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-
-.liquid-chip:hover,
-.liquid-chip:focus-visible {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 42px rgba(10, 132, 255, 0.24);
-  background: linear-gradient(135deg, rgba(10, 132, 255, 0.28), rgba(79, 209, 255, 0.24));
-}
-
-.liquid-chip:hover::after,
-.liquid-chip:focus-visible::after {
-  opacity: 1;
-}
-
-.liquid-chip:focus-visible {
-  outline: 2px solid rgba(10, 132, 255, 0.4);
-  outline-offset: 4px;
-}
-
-.liquid-hint {
-  display: block;
-  margin-top: 16px;
-  text-align: center;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(15, 23, 42, 0.45);
-}
-
-.liquid-viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.liquid-viewport {
-  touch-action: pan-y;
-  scrollbar-width: none;
-}
-
 .contacto-grid {
   display: grid;
   gap: 60px;
@@ -983,14 +871,7 @@ main {
 
   .section {
     padding: 90px 0;
-  }
-
-  .liquid-viewport {
-  touch-action: pan-y;
-    padding: 26px 0;
-  }
-
-  .liquid-track {
+  }.liquid-track {
     gap: 20px;
     padding: 0 40px;
   }
@@ -1042,15 +923,11 @@ main {
 
   .timeline li {
     padding: 20px;
-  }
-
-  .liquid-chip {
-    font-size: 0.95rem;
-    padding: 14px 24px;
-  }
-
-  .footer {
+  }.footer {
     flex-direction: column;
     align-items: flex-start;
   }
 }
+
+
+
