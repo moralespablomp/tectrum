@@ -1,276 +1,280 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tectrum | Consultoría en Transformación Digital</title>
+    <title>Tectrum | Consultor&iacute;a en Transformaci&oacute;n Digital</title>
+    <meta
+      name="description"
+      content="Consultor&iacute;a boutique para digitalizar, automatizar y escalar tu negocio con la precisi&oacute;n de Tectrum."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&family=SF+Pro+Text:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="navbar">
-      <div class="container nav-content">
-        <a href="#inicio" class="logo">Tectrum</a>
+    <div class="noise"></div>
+    <header class="top-bar glass" id="inicio">
+      <div class="wrap">
+        <a class="brand" href="#inicio">Tectrum</a>
         <nav>
           <ul>
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#servicios" data-scroll="true">Servicios</a></li>
+            <li><a href="#metodo" data-scroll="true">M&eacute;todo</a></li>
+            <li><a href="#firma" data-scroll="true">Nuestra firma</a></li>
+            <li><a href="#contacto" data-scroll="true">Contacto</a></li>
           </ul>
         </nav>
+        <a class="btn glass primary" href="#contacto" data-scroll="true">Agenda un diagn&oacute;stico</a>
       </div>
     </header>
 
     <main>
-      <section id="inicio" class="hero section">
-        <div class="container hero-grid">
-          <div class="hero-copy reveal slide-up">
-            <p class="eyebrow">CTransformación digital para tu PYME</p>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Consultor&iacute;a de nueva generaci&oacute;n</span>
             <h1>
-              Transformá tus procesos<br />
+              Diseñamos operaciones digitales<br />
+              tan fluidas como iOS.
             </h1>
-            <p class="hero-subtext">
-              En Tectrum ayudamos a empresas y emprendedores a digitalizar,
-              automatizar y escalar sus operaciones con soluciones simples y
-              efectivas.
+            <div class="hero-pill glass">
+              <span>Progreso acompa&ntilde;ado</span>
+              <strong>Roadmaps accionables + equipos alineados.</strong>
+            </div>
+            <p>
+              Guiamos a startups y pymes en la creaci&oacute;n de procesos inteligentes, automatizaciones seguras y experiencias de cliente impecables. Un enfoque minimalista, centrado en lo esencial y medible.
             </p>
+            <ul class="hero-points">
+              <li>Implementaciones en 6 semanas promedio</li>
+              <li>Equipos capacitados para iterar con autonom&iacute;a</li>
+              <li>Seguimiento de indicadores en tiempo real</li>
+            </ul>
             <div class="hero-actions">
-              <a href="#servicios" class="btn primary" data-scroll="true"
-                >Conocé cómo</a
-              >
-              <a href="#contacto" class="btn ghost">Agenda tu diagnóstico</a>
+              <a class="btn glass primary" href="#servicios" data-scroll="true">Explorar servicios</a>
+              <a class="btn glass ghost" href="#contacto" data-scroll="true">Hablar con un consultor</a>
             </div>
           </div>
-          <div class="hero-visual reveal fade-in">
-            <div class="glass-card">
-              <div class="orb orb-one"></div>
-              <div class="orb orb-two"></div>
-              <div class="orb orb-three"></div>
-              <div class="diagram">
-                <div class="diagram-node"></div>
-                <div class="diagram-node"></div>
-                <div class="diagram-node"></div>
-                <div class="diagram-connection"></div>
-                <div class="diagram-connection"></div>
+          <div class="hero-visual">
+            <div class="floating-orbs" aria-hidden="true">
+              <span class="orb orb-a"></span>
+              <span class="orb orb-b"></span>
+              <span class="orb orb-c"></span>
+            </div>
+            <div class="device-card glass reveal is-visible">
+              <div class="status-bar">
+                <span>09:41</span>
+                <div class="status-icons"></div>
               </div>
+              <div class="widget-grid">
+                <div class="widget glass">
+                  <span class="widget-label">Procesos</span>
+                  <strong>+37%</strong>
+                  <small>Eficiencia operativa</small>
+                </div>
+                <div class="widget glass">
+                  <span class="widget-label">Clientes</span>
+                  <strong>2.3x</strong>
+                  <small>Tasa de retenci&oacute;n</small>
+                </div>
+                <div class="widget glass">
+                  <span class="widget-label">Automaci&oacute;n</span>
+                  <strong>180 h</strong>
+                  <small>Ahorro mensual</small>
+                </div>
+              </div>
+              <div class="light-track"></div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="servicios" class="services section light">
-        <div class="container">
-          <div class="section-header reveal slide-up">
-            <h2>Nuestros servicios</h2>
-            <p class="section-subtitle">
-              Soluciones integrales diseñadas para escalar tu negocio.
-            </p>
-          </div>
-          <div class="services-grid">
-            <article class="service-card reveal slide-up" style="--delay: 0ms">
-              <div class="icon-wrapper">
-                <svg viewBox="0 0 48 48" aria-hidden="true">
-                  <path
-                    d="M12 32l8.5-8.5L27 30l9-14"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                  />
-                  <circle
-                    cx="12"
-                    cy="32"
-                    r="6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="3"
-                  />
-                  <circle cx="36" cy="14" r="5" fill="currentColor" opacity="0.18" />
-                </svg>
-              </div>
-              <h3>Boost — Aceleramos tu negocio</h3>
-              <p>
-                Diagnóstico rápido de procesos, oportunidades de mejora y
-                acciones inmediatas. Ideal para empresas que buscan resultados
-                rápidos.
-              </p>
-            </article>
-
-            <article class="service-card reveal slide-up" style="--delay: 120ms">
-              <div class="icon-wrapper">
-                <svg viewBox="0 0 48 48" aria-hidden="true">
-                  <rect
-                    x="8"
-                    y="10"
-                    width="32"
-                    height="26"
-                    rx="6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="3"
-                  />
-                  <path
-                    d="M14 18h10M14 24h20M14 30h12"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-width="3"
-                  />
-                  <circle cx="34" cy="18" r="3" fill="currentColor" opacity="0.18" />
-                </svg>
-              </div>
-              <h3>Digital — Transformación Digital Simplificada</h3>
-              <p>
-                Implementamos herramientas digitales como automatizaciones,
-                formularios y dashboards. Ideal para emprendedores o pymes que
-                buscan modernizar su operación.
-              </p>
-            </article>
-
-            <article class="service-card reveal slide-up" style="--delay: 240ms">
-              <div class="icon-wrapper">
-                <svg viewBox="0 0 48 48" aria-hidden="true">
-                  <path
-                    d="M12 32l8-16 8 8 8-12"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                  />
-                  <path
-                    d="M10 36h28"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-width="3"
-                  />
-                  <circle cx="36" cy="12" r="4" fill="currentColor" opacity="0.18" />
-                </svg>
-              </div>
-              <h3>Growth — Escalá con estrategia</h3>
-              <p>
-                Definimos objetivos, KPIs y planes de expansión sostenibles.
-                Ideal para equipos que necesitan estructura y foco.
-              </p>
-            </article>
-
-            <article class="service-card reveal slide-up" style="--delay: 360ms">
-              <div class="icon-wrapper">
-                <svg viewBox="0 0 48 48" aria-hidden="true">
-                  <rect
-                    x="10"
-                    y="12"
-                    width="28"
-                    height="24"
-                    rx="6"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="3"
-                  />
-                  <path
-                    d="M16 28h8l4 6 4-14"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="3"
-                  />
-                  <circle cx="18" cy="20" r="3" fill="currentColor" opacity="0.18" />
-                </svg>
-              </div>
-              <h3>Insights — Datos que impulsan decisiones</h3>
-              <p>
-                Creamos tableros visuales, reportes inteligentes y análisis
-                financiero simplificado. Ideal para quienes buscan claridad en
-                su gestión.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="nosotros" class="about section">
-        <div class="container about-grid">
-          <div class="about-media reveal fade-in">
-            <div class="about-frame">
-              <img
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
-                alt="Equipo profesional trabajando"
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <div class="about-copy reveal slide-up">
-            <h2>Somos más que consultores. Somos socios en tu crecimiento.</h2>
+      <section class="momentum" id="firma">
+        <div class="wrap momentum-wrap glass">
+          <div class="momentum-intro reveal">
+            <span class="eyebrow">Nuestra firma</span>
+            <h2>Progreso tangible, cultura digital humana.</h2>
             <p>
-              Tectrum nació para acompañar a las empresas que buscan mejorar su
-              productividad y tomar decisiones basadas en datos. Combinamos
-              ingeniería industrial, tecnología y gestión para diseñar procesos
-              más simples, eficientes y escalables.
+              Tectrum es un equipo multidisciplinario de ingenier&iacute;a, dise&ntilde;o y data. Traducimos objetivos de negocio en operaciones sofisticadas y sencillas de operar. Crecemos con vos, sprint tras sprint.
             </p>
-            <a href="#contacto" class="btn secondary" data-scroll="true"
-              >Descubrí cómo trabajamos</a
-            >
+          </div>
+          <div class="momentum-stats">
+            <div class="stat-chip glass reveal" style="--delay: 80ms">
+              <span>120+</span>
+              <small>Blueprints operativos entregados</small>
+            </div>
+            <div class="stat-chip glass reveal" style="--delay: 160ms">
+              <span>96%</span>
+              <small>Adopci&oacute;n promedio post lanzamiento</small>
+            </div>
+            <div class="stat-chip glass reveal" style="--delay: 240ms">
+              <span>8/10</span>
+              <small>Clientes renuevan roadmap anual</small>
+            </div>
+          </div>
+          <div class="momentum-progress reveal" style="--delay: 320ms">
+            <div class="progress-track">
+              <div class="progress-liquid"></div>
+            </div>
+            <div class="progress-meta">
+              <strong>Crecimiento acompa&ntilde;ado</strong>
+              <span>Seguimiento mensual + sesiones de recalibraci&oacute;n.</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="contacto" class="contact section light">
-        <div class="container contact-grid">
-          <div class="contact-copy reveal slide-up">
-            <h2>Solicitá tu diagnóstico gratuito</h2>
+      <section class="section" id="servicios">
+        <div class="wrap">
+          <header class="section-head reveal">
+            <h2>Servicios enfocados en resultados medibles</h2>
             <p>
-              Completá este formulario y recibí una evaluación rápida de tus
-              oportunidades de mejora.
+              Combinamos tecnolog&iacute;a, dise&ntilde;o de servicios y ciencia de datos para llevar tu organizaci&oacute;n al siguiente nivel.
             </p>
+          </header>
+          <div class="card-grid">
+            <article class="service-card glass reveal">
+              <span class="badge">01</span>
+              <h3>Blueprint Digital</h3>
+              <p>
+                Arquitectura integral de procesos, flujos de informaci&oacute;n y herramientas clave para tu modelo de negocio.
+              </p>
+              <ul>
+                <li>Mapeo de journey interno y externo</li>
+                <li>Roadmap de herramientas escalables</li>
+                <li>Plan de adopci&oacute;n y cultura digital</li>
+              </ul>
+            </article>
+            <article class="service-card glass reveal" style="--delay: 120ms">
+              <span class="badge">02</span>
+              <h3>Automaci&oacute;n Orquestada</h3>
+              <p>
+                Dise&ntilde;o y despliegue de automatizaciones low-code/no-code con gobernanza y seguridad para tu equipo.
+              </p>
+              <ul>
+                <li>RPA &amp; integraciones API-first</li>
+                <li>Dashboards en tiempo real</li>
+                <li>Monitoreo y mejora continua</li>
+              </ul>
+            </article>
+            <article class="service-card glass reveal" style="--delay: 240ms">
+              <span class="badge">03</span>
+              <h3>Growth Intelligence</h3>
+              <p>
+                Estrategias basadas en datos para abrir nuevos canales, optimizar CAC y elevar la retenci&oacute;n de clientes.
+              </p>
+              <ul>
+                <li>OKR y KPIs accionables</li>
+                <li>Modelos predictivos ligeros</li>
+                <li>Experimentaci&oacute;n guiada</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section soft" id="metodo">
+        <div class="wrap metodo-grid">
+          <div class="metodo-intro reveal">
+            <h2>Nuestro m&eacute;todo es modular, transparente y humano.</h2>
+            <p>
+              Cada proyecto se construye como un sistema operativo. Definimos un backlog priorizado, prototipamos r&aacute;pido, entregamos en sprints y te acompa&ntilde;amos en la adopci&oacute;n.
+            </p>
+            <a class="btn glass secondary" href="#contacto" data-scroll="true">Solicitar playbook</a>
+          </div>
+          <ul class="timeline">
+            <li class="glass reveal">
+              <span>Descubrimiento</span>
+              <p>Diagn&oacute;stico de procesos y madurez digital en 10 d&iacute;as.</p>
+            </li>
+            <li class="glass reveal" style="--delay: 120ms">
+              <span>Prototipo guiado</span>
+              <p>Casos de uso validados con tu equipo en sesiones inmersivas.</p>
+            </li>
+            <li class="glass reveal" style="--delay: 240ms">
+              <span>Despliegue &amp; escalado</span>
+              <p>Implementaci&oacute;n con foco en adopci&oacute;n, gobernanza y crecimiento.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section marquee">
+        <div class="liquid-band" aria-hidden="true">
+          <div class="liquid-wave"></div>
+          <div class="liquid-wave delay"></div>
+        </div>
+        <div class="wrap marquee-track">
+          <span>Progreso sin fricci&oacute;n</span>
+          <span>Equipos empoderados</span>
+          <span>Datos accionables</span>
+          <span>Clientes encantados</span>
+          <span>Innovation-as-a-service</span>
+          <span>Progreso sin fricci&oacute;n</span>
+          <span>Equipos empoderados</span>
+          <span>Datos accionables</span>
+          <span>Clientes encantados</span>
+          <span>Innovation-as-a-service</span>
+        </div>
+      </section>
+
+      <section class="section" id="contacto">
+        <div class="wrap contacto-grid">
+          <div class="contacto-copy reveal">
+            <span class="eyebrow">Hablemos</span>
+            <h2>
+              Agenda un diagn&oacute;stico gratuito<br />y recibe tu lista de oportunidades.
+            </h2>
+            <p>
+              Responderemos en menos de 24 horas con un plan inicial y los siguientes pasos sugeridos para tu negocio.
+            </p>
+            <div class="contacto-meta">
+              <div>
+                <strong>Tiempo estimado</strong>
+                <span>30 minutos</span>
+              </div>
+              <div>
+                <strong>Modalidad</strong>
+                <span>Videollamada o presencial</span>
+              </div>
+            </div>
           </div>
           <form
-            class="contact-form reveal slide-up"
+            class="contacto-form glass reveal"
             action="mailto:consultas@tectrum.ar"
             method="post"
             enctype="text/plain"
           >
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="Nombre" required />
+            <input id="nombre" name="Nombre" type="text" required />
+
+            <label for="correo">Correo electr&oacute;nico</label>
+            <input id="correo" name="Correo" type="email" required />
 
             <label for="empresa">Empresa</label>
-            <input type="text" id="empresa" name="Empresa" />
+            <input id="empresa" name="Empresa" type="text" />
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="Email" required />
+            <label for="reto">Desaf&iacute;o principal</label>
+            <textarea id="reto" name="Desaf&iacute;o" rows="4" required></textarea>
 
-            <label for="desafio">¿Cuál es tu principal desafío hoy?</label>
-            <textarea id="desafio" name="Desafío" rows="4" required></textarea>
-
-            <button type="submit" class="btn primary full-width">
-              Enviar y agendar llamada
-            </button>
-            <a class="whatsapp" href="https://wa.me/5491112345678" target="_blank" rel="noopener"
-              >o escribinos por WhatsApp</a
-            >
+            <button class="btn glass primary" type="submit">Enviar solicitud</button>
+            <a class="whatsapp" href="https://wa.me/5491112345678" target="_blank" rel="noopener">o escribinos por WhatsApp</a>
           </form>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container footer-content">
-        <span>©2025 Tectrum. Todos los derechos reservados.</span>
+    <footer class="footer glass">
+      <div class="wrap footer-grid">
+        <span>&copy; 2025 Tectrum. Transformaci&oacute;n digital con sentido.</span>
         <div class="footer-links">
           <a href="mailto:consultas@tectrum.ar">consultas@tectrum.ar</a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener"
-            >LinkedIn</a
-          >
-          <a href="https://www.instagram.com" target="_blank" rel="noopener"
-            >Instagram</a
-          >
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
         </div>
       </div>
     </footer>
