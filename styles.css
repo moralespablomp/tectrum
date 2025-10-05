@@ -659,7 +659,7 @@ main {
   max-width: 520px;
   font-size: var(--font-size-body-large);
   line-height: 1.68;
-  margin: 0;
+  margin: 10 0 28px;
 }
 
 .contacto-meta {
@@ -673,7 +673,7 @@ main {
   font-size: 0.85rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(15, 23, 42, 0.55);
+  color: #ff7ab5;
 }
 
 .contacto-meta span {
