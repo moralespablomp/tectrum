@@ -732,7 +732,7 @@ main {
 .footer {
   margin: 0 auto 80px;
   width: min(88%, var(--max-width));
-  padding: 32px 40px;
+  padding: 10px 10px;
   display: grid;
   gap: 22px;
   justify-items: center;
