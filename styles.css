@@ -561,6 +561,7 @@ main {
   letter-spacing: -0.01em;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
@@ -627,10 +628,17 @@ main {
 }
 
 .timeline span {
-  display: block;
-  font-weight: 600;
-  font-size: 0.92rem;
-  margin-bottom: 6px;
+    display: block;
+    font-weight: 600;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: var(--font-size-card-title);
+    margin: 0 auto;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg,var(--color-accent-warm),var(--color-text-soft));
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
 }
 
 .timeline p {
@@ -638,6 +646,7 @@ main {
   color: var(--color-text-soft);
   font-size: var(--font-size-body);
   line-height: 1.62;
+  text-align: center;
 }
 
 .contacto-grid {
@@ -664,16 +673,22 @@ main {
 
 .contacto-meta {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   flex-wrap: wrap;
 }
 
 .contacto-meta strong {
-  display: block;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #ff7ab5;
+    display: block;
+    font-weight: 600;
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: var(--font-size-card-title);
+    margin: 0 auto;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, var(--color-accent-warm), var(--color-secondary));
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
 }
 
 .contacto-meta span {
