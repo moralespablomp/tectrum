@@ -19,13 +19,13 @@
   --radius-sm: 14px;
   --max-width: 1080px;
   --transition: 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  --font-size-hero: clamp(2.6rem, 4.6vw, 3.8rem);
-  --font-size-section-title: clamp(2.2rem, 3.6vw, 3.1rem);
-  --font-size-section-head: clamp(2rem, 3.2vw, 2.6rem);
-  --font-size-card-title: clamp(1.28rem, 2.1vw, 1.6rem);
-  --font-size-body-large: 1.08rem;
-  --font-size-body: 1rem;
-  --font-size-eyebrow: 0.72rem;
+  --font-size-hero: clamp(2.1rem, 5.2vw, 3.8rem);
+  --font-size-section-title: clamp(1.9rem, 4.8vw, 3.1rem);
+  --font-size-section-head: clamp(1.7rem, 4.4vw, 2.6rem);
+  --font-size-card-title: clamp(1.08rem, 3.2vw, 1.6rem);
+  --font-size-body-large: clamp(1rem, 2.8vw, 1.12rem);
+  --font-size-body: clamp(0.96rem, 2.6vw, 1rem);
+  --font-size-eyebrow: 0.7rem;
 }
 
 * {
@@ -828,6 +828,66 @@ main {
   transform: translateY(0);
 }
 
+.tools {
+  padding: 40px 0;
+  position: relative;
+}
+
+.tools .section-head {
+  max-width: 640px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.tool-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.tool-card {
+  position: relative;
+  padding: 40px 24px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: center;
+}
+
+.tool-card::after {
+  content: attr(data-brand);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  color: rgba(15, 23, 42, 0.08);
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+.tool-label {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
 @keyframes orb-drift-a {
   0%,
   100% {
@@ -893,10 +953,7 @@ main {
 @media (max-width: 1100px) {
   nav ul {
     gap: 20px;
-  }
-}
-
-@media (max-width: 960px) {
+  }@media (max-width: 960px) {
   .top-bar {
     flex-wrap: wrap;
     justify-content: center;
@@ -925,7 +982,6 @@ main {
     padding: 44px;
   }
 }
-
 @media (max-width: 720px) {
   body {
     font-size: 16px;
@@ -960,6 +1016,23 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 
+  .tools .section-head {
+    margin-bottom: 32px;
+  }
+
+  .tool-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .tool-card {
+    padding: 32px 20px;
+  }
+
+  .tool-card::after {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+    letter-spacing: 0.18em;
+  }
+
   .section {
     padding: 30px 0;
   }
@@ -972,12 +1045,15 @@ main {
     padding: 28px;
   }
 
+  .contacto-form iframe {
+    min-height: 420px;
+  }
+
   .footer {
     padding: 28px;
     gap: 18px;
   }
 }
-
 @media (max-width: 520px) {
   .top-bar {
     flex-direction: column;
@@ -1014,6 +1090,19 @@ main {
     padding: 28px;
   }
 
+  .tool-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .tool-card {
+    padding: 26px 18px;
+  }
+
+  .tool-card::after {
+    font-size: clamp(1.1rem, 8vw, 1.8rem);
+    letter-spacing: 0.16em;
+  }
+
   .timeline li {
     padding: 20px;
   }
@@ -1022,5 +1111,6 @@ main {
     width: min(94%, var(--max-width));
   }
 }
+
 
 
