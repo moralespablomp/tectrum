@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --color-bg-start: #f0f5ff;
   --color-bg-end: #dfe7ff;
   --color-bg-highlight: rgba(134, 197, 255, 0.4);
@@ -844,8 +844,10 @@ main {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(20px, 4vw, 32px);
+  align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .tool-card {
@@ -856,37 +858,121 @@ main {
   text-align: center;
 }
 
-.tool-card::after {
-  content: attr(data-brand);
+.tool-card::before {
+  content: "";
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-weight: 600;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  font-size: clamp(1.4rem, 4vw, 2.4rem);
-  color: rgba(15, 23, 42, 0.08);
-  pointer-events: none;
-  mix-blend-mode: multiply;
+  inset: -55% -40%;
+  background: radial-gradient(60% 60% at 20% 20%, hsla(var(--tool-hue), 95%, 70%, 0.32), transparent 72%);
+  opacity: 0;
+  transform: translate3d(0, 18px, 0) scale(1.08);
+  transition: opacity var(--transition), transform var(--transition);
+  z-index: 0;
 }
 
-.tool-label {
+.tool-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity var(--transition);
+  z-index: 0;
+}
+
+.tool-card:hover,
+.tool-card:focus-within {
+  transform: translateY(-8px);
+  box-shadow: 0 32px 90px rgba(15, 23, 42, 0.24);
+}
+
+.tool-card:hover::before,
+.tool-card:focus-within::before {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.tool-card:hover::after,
+.tool-card:focus-within::after {
+  opacity: 1;
+}
+
+.tool-inner {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3vw, 18px);
   z-index: 1;
+  height: 100%;
+}
+
+.tool-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--color-text);
+  background: linear-gradient(135deg, hsla(var(--tool-hue), 95%, 78%, 0.35), hsla(var(--tool-hue), 95%, 58%, 0.72));
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 8px 20px rgba(15, 23, 42, 0.14);
+  justify-self: start;
+  transition: transform var(--transition);
+}
+
+.tool-card:hover .tool-logo,
+.tool-card:focus-within .tool-logo {
+  transform: rotate(-8deg) scale(1.05);
+}
+
+.tool-name {
+  margin: 0;
+  font-size: clamp(1.18rem, 2.6vw, 1.52rem);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.tool-copy p {
+  margin: 8px 0 0;
+  color: var(--color-text-soft);
+  font-size: var(--font-size-body);
+  line-height: 1.65;
+}
+
+.tool-meta {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tool-pill {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
+  gap: 6px;
+  padding: 8px 14px;
   border-radius: 999px;
+  font-size: 0.78rem;
   font-weight: 600;
-  font-size: var(--font-size-body);
-  color: var(--color-text);
-  background: rgba(255, 255, 255, 0.82);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, hsla(var(--tool-hue), 95%, 78%, 0.16), hsla(var(--tool-hue), 95%, 58%, 0.4));
+  color: hsla(var(--tool-hue), 38%, 26%, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
+
+.tool-pill::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsla(var(--tool-hue), 92%, 56%, 0.9);
+  box-shadow: 0 0 0 4px hsla(var(--tool-hue), 92%, 70%, 0.18);
+}
+
 
 @keyframes orb-drift-a {
   0%,
@@ -1091,6 +1177,120 @@ main {
   }
 
   .tool-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tool-card {
+    padding: clamp(20px, 8vw, 24px);
+  }
+
+  .tool-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .tool-meta {
+    gap: 8px;
+  }
+
+  .timeline li {
+    padding: 20px;
+  }
+
+  .footer {
+    width: min(94%, var(--max-width));
+  }
+}
+
+  nav ul {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .hero-grid {
+    gap: 36px;
+  }
+
+  .floating-orbs {
+    inset: -30% -30% -10% -30%;
+  }
+
+  .device-card {
+    width: min(340px, 100%);
+  }
+
+  .service-card {
+    padding: 28px;
+  }
+
+  .tool-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tool-card {
+    padding: clamp(20px, 8vw, 24px);
+  }
+
+  .tool-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+  }
+
+  .tool-meta {
+    gap: 8px;
+  }
+
+  .timeline li {
+    padding: 20px;
+  }
+
+  .footer {
+    width: min(94%, var(--max-width));
+  }
+}
+
+  nav ul {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .hero-grid {
+    gap: 36px;
+  }
+
+  .floating-orbs {
+    inset: -30% -30% -10% -30%;
+  }
+
+  .device-card {
+    width: min(340px, 100%);
+  }
+
+  .service-card {
+    padding: 28px;
+  }
+
+  .tool-grid {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 
@@ -1114,3 +1314,9 @@ main {
 
 
 
+
+@media (min-width: 1480px) {
+  .tools {
+    --tool-min: clamp(280px, 22vw, 360px);
+  }
+}
