@@ -92,6 +92,11 @@ body {
   overflow-x: hidden;
 }
 
+/* Home: clean hero without extra orbs */
+.home .hero::before { content: none; }
+.home .floating-orbs { display: none !important; }
+.home .noise { opacity: 0.04; }
+
 .noise {
   position: fixed;
   inset: 0;
