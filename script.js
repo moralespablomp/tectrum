@@ -1,4 +1,13 @@
-﻿const scrollLinks = document.querySelectorAll('[data-scroll="true"]');
+const scrollLinks = document.querySelectorAll('[data-scroll="true"]');
+const headerEl = document.querySelector('.top-bar');
+
+function scrollToWithOffset(target) {
+  const rect = target.getBoundingClientRect();
+  const headerH = headerEl ? headerEl.offsetHeight : 0;
+  const topOffset = (headerH || 0) + 16; // leave space so titles aren’t hidden
+  const scrollTop = window.pageYOffset + rect.top - topOffset;
+  window.scrollTo({ top: Math.max(0, scrollTop), behavior: 'smooth' });
+}
 
 scrollLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
@@ -7,10 +16,20 @@ scrollLinks.forEach((link) => {
       event.preventDefault();
       const target = document.querySelector(href);
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+        scrollToWithOffset(target);
       }
     }
   });
+});
+
+// Ensure initial hash lands below the sticky header
+window.addEventListener('load', () => {
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) {
+      setTimeout(() => scrollToWithOffset(target), 0);
+    }
+  }
 });
 
 const revealElements = document.querySelectorAll('.reveal');
@@ -174,3 +193,4 @@ if (dropdownToggles.length) {
     }
   });
 }
+
