@@ -167,15 +167,101 @@ nav ul {
   padding: 0;
 }
 
-nav a {
+nav a,
+.nav-link {
   color: var(--color-text-soft);
   font-size: 0.95rem;
   transition: color var(--transition);
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
 }
 
 nav a:hover,
-nav a:focus {
+nav a:focus,
+.nav-link:hover,
+.nav-link:focus {
   color: var(--color-text);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  color: var(--color-text-soft);
+}
+
+.dropdown-caret {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform var(--transition);
+  margin-top: -2px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translate(-50%, 6px);
+  min-width: 200px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 0 22px 60px rgba(15, 23, 42, 0.18);
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  z-index: 30;
+}
+
+.dropdown-menu a {
+  color: var(--color-text);
+  font-size: 0.92rem;
+}
+
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  color: var(--color-primary);
+}
+
+.nav-dropdown:hover > .dropdown-toggle,
+.nav-dropdown:focus-within > .dropdown-toggle {
+  color: var(--color-text);
+}
+
+.nav-dropdown:hover > .dropdown-menu,
+.nav-dropdown:focus-within > .dropdown-menu,
+.nav-dropdown.is-open > .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.nav-dropdown.is-open > .dropdown-toggle .dropdown-caret {
+  transform: rotate(-135deg);
+}
+
+.nav-dropdown:hover > .dropdown-toggle .dropdown-caret,
+.nav-dropdown:focus-within > .dropdown-toggle .dropdown-caret {
+  transform: rotate(-135deg);
 }
 
 .btn {
