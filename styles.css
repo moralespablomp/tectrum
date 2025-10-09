@@ -136,7 +136,8 @@ a {
   position: sticky;
   top: 14px;
   margin: 24px auto 0;
-  width: min(92%, var(--max-width));
+  /* ~5% side spacing on desktop */
+  width: min(90%, var(--max-width));
   padding: 14px 20px;
   display: flex;
   align-items: center;
@@ -180,6 +181,14 @@ nav a,
   align-items: center;
   gap: 6px;
   cursor: pointer;
+}
+
+/* Responsive header sizing */
+@media (max-width: 960px) {
+  .top-bar { width: min(92%, var(--max-width)); }
+}
+@media (max-width: 720px) {
+  .top-bar { width: min(94%, var(--max-width)); padding: 12px 14px; gap: 12px; flex-wrap: wrap; }
 }
 
 nav a:hover,
