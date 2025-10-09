@@ -768,7 +768,7 @@ main {
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    text-align: center;
+    text-align: left;
 }
 
 .timeline p {
