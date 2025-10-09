@@ -4,30 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tectrum | Automation</title>
-    <meta name="description" content="Automation de Tectrum: automatizá tareas críticas con flujos low‑code, integraciones robustas y métricas en tiempo real." />
+    <meta name="description" content="Automation de Tectrum: automatizá tareas críticas con flujos low-code, integraciones robustas y métricas en tiempo real." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600&family=SF+Pro+Text:wght@300;400;500&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <link rel="icon" type="image/png" href="https://tectrum.ar//docs/Images/logo.png"/>
   </head>
   <body class="product-automation">
     <div class="noise"></div>
     <header class="top-bar glass">
       <div class="wrap">
-        <a class="brand" href="index.html#inicio">Tectrum</a>
+        <a class="brand" href="../#inicio">Tectrum</a>
         <nav>
           <ul>
-            <li><a href="index.html#firma">Nosotros</a></li>
-            <li><a href="index.html#servicios">Servicios</a></li>
-            <li><a href="boost.html">Boost</a></li>
-            <li><a href="automation.html">Automation</a></li>
-            <li><a href="growth-intelligence.html">Growth Intelligence</a></li>
-            <li><a href="index.html#herramientas">Herramientas</a></li>
-            <li><a href="roadmap.html">Roadmap</a></li>
+            <li><a href="../#firma">Nosotros</a></li>
+            <li class="nav-dropdown">
+              <button class="nav-link dropdown-toggle" type="button" data-dropdown-target="services-menu" aria-expanded="false">
+                Servicios
+                <span class="dropdown-caret" aria-hidden="true"></span>
+              </button>
+              <ul id="services-menu" class="dropdown-menu">
+                <li><a href="../#servicios">Visi&oacute;n general</a></li>
+                <li><a href="../boost/">Boost</a></li>
+                <li><a href="../automation/">Automation</a></li>
+                <li><a href="../growth-intelligence/">Growth Intelligence</a></li>
+              </ul>
+            </li>
+            <li><a href="../#herramientas">Herramientas</a></li>
+            <li><a href="../roadmap/">Roadmap</a></li>
           </ul>
         </nav>
-        <a class="btn glass primary" href="index.html#contacto">Contacto</a>
+        <a class="btn glass primary" href="../#contacto">Contacto</a>
       </div>
     </header>
 
@@ -38,7 +46,7 @@
             <span class="eyebrow">Producto</span>
             <h1>Automation</h1>
             <p>
-              Elimin&aacute; tareas repetitivas y conect&aacute; tus herramientas con flujos low‑code. Gan&aacute; velocidad, trazabilidad y calidad en toda la operaci&oacute;n.
+              Elimin&aacute; tareas repetitivas y conect&aacute; tus herramientas con flujos low-code. Gan&aacute; velocidad, trazabilidad y calidad en toda la operaci&oacute;n.
             </p>
             <ul class="hero-points">
               <li>Flujos autom&aacute;ticos confiables</li>
@@ -46,16 +54,11 @@
               <li>Monitoreo y alertas en tiempo real</li>
             </ul>
             <div class="hero-actions">
-              <a class="btn glass primary" href="index.html#contacto">Hablar con nosotros</a>
-              <a class="btn glass ghost" href="index.html#inicio">Volver al home</a>
+              <a class="btn glass primary" href="../#contacto">Hablar con nosotros</a>
+              <a class="btn glass ghost" href="../#inicio">Volver al home</a>
             </div>
           </div>
           <div class="hero-visual">
-            <div class="floating-orbs" aria-hidden="true">
-              <span class="orb orb-a"></span>
-              <span class="orb orb-b"></span>
-              <span class="orb orb-c"></span>
-            </div>
             <div class="device-card glass reveal is-visible">
               <div class="status-bar"><div class="status-icons"></div></div>
               <div class="widget-grid">
@@ -80,11 +83,27 @@
         </div>
       </section>
 
+      <section class="section soft">
+        <div class="wrap metodo-grid">
+          <div class="metodo-intro reveal">
+            <h2>Paso a paso</h2>
+            <p>Automatizamos con foco en impacto y seguridad, de forma iterativa y medible.</p>
+          </div>
+          <ul class="timeline">
+            <li class="glass reveal"><span>1. Relevamiento</span><p>Identificamos tareas repetitivas, reglas de negocio y sistemas involucrados.</p></li>
+            <li class="glass reveal" style="--delay: 120ms"><span>2. Diseño de flujos</span><p>Definimos flujos low-code y puntos de integración con mejores prácticas.</p></li>
+            <li class="glass reveal" style="--delay: 240ms"><span>3. Prototipo y pruebas</span><p>Validamos con datos reales, resolvemos excepciones y estabilizamos el flujo.</p></li>
+            <li class="glass reveal" style="--delay: 360ms"><span>4. Integración y despliegue</span><p>Conectamos aplicaciones, securizamos accesos y versionamos cambios.</p></li>
+            <li class="glass reveal" style="--delay: 480ms"><span>5. Monitoreo y mejora</span><p>Dashboards, alertas y evolución continua del flujo automatizado.</p></li>
+          </ul>
+        </div>
+      </section>
+
       <section class="section" id="lab">
         <div class="wrap">
           <header class="section-head reveal">
             <h2>Automation Lab</h2>
-            <p>Flujos low‑code, bots y eventos trabajando en conjunto.</p>
+            <p>Flujos low-code, bots y eventos trabajando en conjunto.</p>
           </header>
           <div class="automation-flow">
             <div class="flow-node glass reveal"><strong>Evento</strong><br/><small>Nuevo lead</small></div>
@@ -106,7 +125,7 @@
               </div>
               <div>
                 <strong>Bot CRM</strong>
-                <p class="" style="margin: 6px 0 0; color: var(--color-text-soft)">Actualiza contactos y oportunidades sin intervención humana.</p>
+                <p style="margin: 6px 0 0; color: var(--color-text-soft)">Actualiza contactos y oportunidades sin intervención humana.</p>
               </div>
             </div>
             <div class="bot-card reveal glass" style="--delay: 80ms">
@@ -174,60 +193,7 @@
             </article>
           </div>
           <div class="hero-actions" style="margin-top: 24px; text-align:center">
-            <a class="btn glass primary" href="index.html#contacto">Quiero automatizar ahora</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section soft">
-        <div class="wrap metodo-grid">
-          <div class="metodo-intro reveal">
-            <h2>Paso a paso</h2>
-            <p>Automatizamos con foco en impacto y seguridad, de forma iterativa y medible.</p>
-          </div>
-          <ul class="timeline">
-            <li class="glass reveal"><span>1. Relevamiento</span><p>Identificamos tareas repetitivas, reglas de negocio y sistemas involucrados.</p></li>
-            <li class="glass reveal" style="--delay: 120ms"><span>2. Diseño de flujos</span><p>Definimos flujos low‑code y puntos de integración con mejores prácticas.</p></li>
-            <li class="glass reveal" style="--delay: 240ms"><span>3. Prototipo y pruebas</span><p>Validamos con datos reales, resolvemos excepciones y estabilizamos el flujo.</p></li>
-            <li class="glass reveal" style="--delay: 360ms"><span>4. Integración y despliegue</span><p>Conectamos aplicaciones, securizamos accesos y versionamos cambios.</p></li>
-            <li class="glass reveal" style="--delay: 480ms"><span>5. Monitoreo y mejora</span><p>Dashboards, alertas y evolución continua del flujo automatizado.</p></li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="wrap">
-          <header class="section-head reveal">
-            <h2>Qué logr&aacute;s con Automation</h2>
-          </header>
-          <div class="card-grid">
-            <article class="service-card glass reveal">
-              <h3>Operación más rápida</h3>
-              <p>Menos pasos manuales, más foco en tareas de valor.</p>
-              <ul>
-                <li>RPA low‑code</li>
-                <li>Orquestación por eventos</li>
-                <li>SLAs visibles</li>
-              </ul>
-            </article>
-            <article class="service-card glass reveal">
-              <h3>Datos consistentes</h3>
-              <p>Información sincronizada entre sistemas, sin duplicados ni errores.</p>
-              <ul>
-                <li>Validaciones y políticas</li>
-                <li>Logs y trazabilidad</li>
-                <li>Backoff / reintentos</li>
-              </ul>
-            </article>
-            <article class="service-card glass reveal">
-              <h3>Control total</h3>
-              <p>Métricas y alertas en tiempo real para tomar decisiones.</p>
-              <ul>
-                <li>Dashboards operativos</li>
-                <li>Alertas proactivas</li>
-                <li>Versionado de flujos</li>
-              </ul>
-            </article>
+            <a class="btn glass primary" href="../#contacto">Quiero automatizar ahora</a>
           </div>
         </div>
       </section>
@@ -243,6 +209,6 @@
       </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
   </body>
   </html>
