@@ -194,3 +194,117 @@ if (dropdownToggles.length) {
   });
 }
 
+// Contact form handling
+(function () {
+  const form = document.getElementById('tectrum-contact-form');
+  if (!form) return;
+
+  const nameEl = document.getElementById('cf-name');
+  const emailEl = document.getElementById('cf-email');
+  const reqContactEl = document.getElementById('cf-req-contact');
+  const reqPlaybookEl = document.getElementById('cf-req-playbook');
+  const companyEl = document.getElementById('cf-company');
+  const challengeEl = document.getElementById('cf-challenge');
+  const availabilityEl = document.getElementById('cf-availability');
+  const successEl = document.getElementById('cf-success');
+  const msIframe = document.getElementById('ms-form-iframe');
+
+  const getErrorBox = (inputId) => document.querySelector(`.error-msg[data-error-for="${inputId}"]`);
+
+  const setError = (inputEl, message) => {
+    if (!inputEl) return false;
+    inputEl.classList.add('is-invalid');
+    const box = getErrorBox(inputEl.id);
+    if (box) box.textContent = message || '';
+    return false;
+  };
+
+  const clearError = (inputEl) => {
+    if (!inputEl) return;
+    inputEl.classList.remove('is-invalid');
+    const box = getErrorBox(inputEl.id);
+    if (box) box.textContent = '';
+  };
+
+  const validEmail = (value) => /.+@.+\..+/.test(String(value).trim());
+
+  const validate = () => {
+    let ok = true;
+    clearError(nameEl);
+    clearError(emailEl);
+    clearError(companyEl);
+    clearError(challengeEl);
+    clearError(availabilityEl);
+    const requestErrorBox = document.querySelector('.error-msg[data-error-for="cf-request"]');
+    if (requestErrorBox) requestErrorBox.textContent = '';
+
+    if (!nameEl.value.trim()) ok = setError(nameEl, 'Este campo es obligatorio.');
+    if (!emailEl.value.trim()) {
+      ok = setError(emailEl, 'Este campo es obligatorio.');
+    } else if (!validEmail(emailEl.value)) {
+      ok = setError(emailEl, 'Ingresá un correo válido.');
+    }
+    if (!companyEl.value.trim()) ok = setError(companyEl, 'Este campo es obligatorio.');
+    if (!challengeEl.value.trim()) ok = setError(challengeEl, 'Este campo es obligatorio.');
+    if (!availabilityEl.value.trim()) ok = setError(availabilityEl, 'Este campo es obligatorio.');
+    if (!reqContactEl.checked && !reqPlaybookEl.checked) {
+      if (requestErrorBox) requestErrorBox.textContent = 'Seleccioná al menos una opción.';
+      ok = false;
+    }
+    return ok;
+  };
+
+  [nameEl, emailEl, companyEl, challengeEl, availabilityEl].forEach((el) => {
+    if (!el) return;
+    el.addEventListener('input', () => clearError(el));
+    el.addEventListener('blur', () => {
+      if (el.value.trim()) clearError(el);
+    });
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    // Datos del formulario visible
+    const payload = {
+      name: nameEl.value.trim(),
+      email: emailEl.value.trim(),
+      request_contact: reqContactEl.checked,
+      request_playbook: reqPlaybookEl.checked,
+      company: companyEl.value.trim(),
+      challenge: challengeEl.value.trim(),
+      availability: availabilityEl.value.trim(),
+    };
+
+    // Intento best-effort de prellenado de MS Forms mediante querystring
+    try {
+      if (msIframe && msIframe.src) {
+        const prefillMap = (window.MS_FORMS_PREFILL || {});
+        const base = new URL(msIframe.src);
+        // Mantener parámetros existentes (embed=true) y agregar los posibles campos
+        const params = base.searchParams;
+        Object.entries(payload).forEach(([key, value]) => {
+          const mapped = prefillMap[key];
+          if (mapped) {
+            const v = typeof value === 'boolean' ? (value ? 'Sí' : 'No') : String(value);
+            params.set(mapped, v);
+          }
+        });
+        // Algunos formularios soportan submit automático por query (no garantizado)
+        if (!params.has('submit')) params.set('submit', '1');
+        msIframe.src = base.toString();
+      }
+    } catch (_) {
+      // Ignorar: navegadores pueden bloquear acceso/lectura del src si hay políticas estrictas
+    }
+
+    // Confirmación y reseteo del formulario visible
+    if (successEl) {
+      successEl.hidden = false;
+      successEl.textContent = 'Gracias por tu solicitud, te contactaremos pronto.';
+    }
+    form.reset();
+  });
+})();
+

@@ -314,7 +314,65 @@
             </div>
           </div>
           <div class="contacto-form glass reveal">
-            <iframe width="640px" height="480px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=lgEthFu5DUGUZ8cnYw1BVSXCktbALEVEtFEHpv6pkQhUNEYxUU83TVdESU1NRVQ3ODQxMTdIOExQNi4u&amp;embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+            <!-- Nuevo formulario visible -->
+            <form id="tectrum-contact-form" class="contact-form" novalidate>
+              <div class="form-grid">
+              <div class="form-row">
+                <label for="cf-name">Nombre</label>
+                <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Tu nombre" required />
+                <p class="error-msg" data-error-for="cf-name"></p>
+              </div>
+
+              <div class="form-row">
+                <label for="cf-email">Correo electrónico</label>
+                <input id="cf-email" name="email" type="email" autocomplete="email" placeholder="tucorreo@empresa.com" required />
+                <p class="error-msg" data-error-for="cf-email"></p>
+              </div>
+
+              <div class="form-row span-2">
+                <span class="label">Tipo de solicitud</span>
+                <div class="checkbox-group">
+                  <label class="checkbox">
+                    <input type="checkbox" id="cf-req-contact" name="request_contact" />
+                    <span>Quiero que me contacten</span>
+                  </label>
+                  <label class="checkbox">
+                    <input type="checkbox" id="cf-req-playbook" name="request_playbook" />
+                    <span>Quiero un playbook</span>
+                  </label>
+                </div>
+                <p class="error-msg" data-error-for="cf-request"></p>
+              </div>
+
+              <div class="form-row">
+                <label for="cf-company">Empresa</label>
+                <input id="cf-company" name="company" type="text" placeholder="Nombre de la empresa" required />
+                <p class="error-msg" data-error-for="cf-company"></p>
+              </div>
+
+              <div class="form-row span-2">
+                <label for="cf-challenge">Desafío principal</label>
+                <textarea id="cf-challenge" name="challenge" rows="4" placeholder="Contanos brevemente el principal desafío" required></textarea>
+                <p class="error-msg" data-error-for="cf-challenge"></p>
+              </div>
+
+              <div class="form-row">
+                <label for="cf-availability">Horario disponible</label>
+                <input id="cf-availability" name="availability" type="text" placeholder="Ej: Lun a Vie, 9 a 15 hs" required />
+                <p class="error-msg" data-error-for="cf-availability"></p>
+              </div>
+
+              <div class="form-actions span-2">
+                <button type="submit" class="btn primary">Enviar solicitud</button>
+                <span id="cf-success" class="success-msg" role="status" aria-live="polite" hidden>Gracias por tu solicitud, te contactaremos pronto.</span>
+              </div>
+              </div>
+            </form>
+
+            <!-- Microsoft Form embebido y oculto: se mantiene en el DOM -->
+            <div id="ms-form-wrapper" style="display:none">
+              <iframe id="ms-form-iframe" width="640" height="480" src="https://forms.office.com/Pages/ResponsePage.aspx?id=lgEthFu5DUGUZ8cnYw1BVSXCktbALEVEtFEHpv6pkQhUNEYxUU83TVdESU1NRVQ3ODQxMTdIOExQNi4u&amp;embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+            </div>
           </div>
         </div>
       </section>
@@ -332,6 +390,22 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      // Configuración opcional de mapeo de campos para intentar precompletar MS Forms vía querystring
+      // IMPORTANTE: MS Forms no permite controlar el iframe desde otro origen por políticas de seguridad del navegador.
+      // Para intentar pre-llenar, obtené los nombres de parámetros de tu formulario (si están habilitados) y reemplazá los valores abajo.
+      // Si MS Forms no soporta prefill por URL en tu formulario, los datos no podrán transferirse automáticamente.
+      window.MS_FORMS_PREFILL = {
+        // Reemplazar con las claves reales si MS Forms las provee para prellenado
+        name: 'Nombre',
+        email: 'Correo',
+        company: 'Empresa',
+        challenge: 'Desafio',
+        availability: 'Horario',
+        request_contact: 'QuieroContactar',
+        request_playbook: 'QuieroPlaybook'
+      };
+    </script>
   </body>
 </html>
 

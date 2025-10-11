@@ -1462,6 +1462,78 @@ main {
   }
 }
 
+/* Contact form (visible) */
+.contact-form { display: block; }
+
+.contact-form .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 18px;
+}
+
+.contact-form .form-row { display: grid; gap: 8px; }
+
+.contact-form .span-2 { grid-column: 1 / -1; }
+
+.contact-form label,
+.contact-form .label {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: rgba(10, 132, 255, 0.4);
+  box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.16);
+}
+
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+.contact-form .checkbox-group { display: flex; gap: 12px 18px; flex-wrap: wrap; }
+
+.contact-form .checkbox { display: inline-flex; align-items: center; gap: 10px; user-select: none; }
+.contact-form .checkbox input { width: 18px; height: 18px; accent-color: var(--color-primary); }
+
+.contact-form .form-actions { display: flex; align-items: center; gap: 12px; justify-content: space-between; flex-wrap: wrap; }
+
+.contact-form .error-msg { color: #b42318; font-size: 0.85rem; min-height: 1.1em; }
+
+.contact-form .success-msg {
+  color: #0f5132;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.contact-form .is-invalid {
+  border-color: #b42318 !important;
+  box-shadow: 0 0 0 4px rgba(180, 35, 24, 0.15) !important;
+}
+
+@media (max-width: 760px) {
+  .contact-form .form-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== Unique product components ===== */
 /* Shared layout helpers */
 .visual-grid,
