@@ -194,7 +194,7 @@ if (dropdownToggles.length) {
   });
 }
 
-// Contact form handling
+// Contact form handling (con redirección a MS Forms con datos prellenados)
 (function () {
   const form = document.getElementById('tectrum-contact-form');
   if (!form) return;
@@ -207,7 +207,7 @@ if (dropdownToggles.length) {
   const challengeEl = document.getElementById('cf-challenge');
   const availabilityEl = document.getElementById('cf-availability');
   const successEl = document.getElementById('cf-success');
-  const msIframe = document.getElementById('ms-form-iframe');
+  const msIframe = document.getElementById('ms-form');
 
   const getErrorBox = (inputId) => document.querySelector(`.error-msg[data-error-for="${inputId}"]`);
 
@@ -226,7 +226,7 @@ if (dropdownToggles.length) {
     if (box) box.textContent = '';
   };
 
-  const validEmail = (value) => /.+@.+\..+/.test(String(value).trim());
+  const validEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value).trim());
 
   const validate = () => {
     let ok = true;
@@ -266,7 +266,6 @@ if (dropdownToggles.length) {
     e.preventDefault();
     if (!validate()) return;
 
-    // Datos del formulario visible
     const payload = {
       name: nameEl.value.trim(),
       email: emailEl.value.trim(),
@@ -277,34 +276,113 @@ if (dropdownToggles.length) {
       availability: availabilityEl.value.trim(),
     };
 
-    // Intento best-effort de prellenado de MS Forms mediante querystring
-    try {
-      if (msIframe && msIframe.src) {
-        const prefillMap = (window.MS_FORMS_PREFILL || {});
-        const base = new URL(msIframe.src);
-        // Mantener parámetros existentes (embed=true) y agregar los posibles campos
-        const params = base.searchParams;
-        Object.entries(payload).forEach(([key, value]) => {
-          const mapped = prefillMap[key];
-          if (mapped) {
-            const v = typeof value === 'boolean' ? (value ? 'Sí' : 'No') : String(value);
-            params.set(mapped, v);
-          }
-        });
-        // Algunos formularios soportan submit automático por query (no garantizado)
-        if (!params.has('submit')) params.set('submit', '1');
-        msIframe.src = base.toString();
-      }
-    } catch (_) {
-      // Ignorar: navegadores pueden bloquear acceso/lectura del src si hay políticas estrictas
-    }
+    // Claves de prellenado: usar config global si existe, sino defaults
+    const defaultMap = {
+      name: 'Nombre',
+      email: 'Correo',
+      company: 'Empresa',
+      challenge: 'Desafio',
+      availability: 'Horario',
+      request_contact: 'QuieroContactar',
+      request_playbook: 'QuieroPlaybook',
+    };
+    const prefillMap = Object.assign({}, defaultMap, (window.MS_FORMS_PREFILL || {}));
 
-    // Confirmación y reseteo del formulario visible
+    // Base del MS Form desde el iframe oculto (o fallback genérico)
+    let baseUrl = 'https://forms.office.com/Pages/ResponsePage.aspx?id=XXXX';
+    try {
+      const src = msIframe && msIframe.getAttribute('src');
+      if (src) baseUrl = src;
+    } catch (_) {}
+
+    const url = new URL(baseUrl);
+    Object.entries(payload).forEach(([key, value]) => {
+      const mapped = prefillMap[key];
+      if (!mapped) return;
+      const v = typeof value === 'boolean' ? (value ? 'Sí' : 'No') : String(value);
+      url.searchParams.set(mapped, v);
+    });
+
+    // Feedback y redirección
     if (successEl) {
       successEl.hidden = false;
       successEl.textContent = 'Gracias por tu solicitud, te contactaremos pronto.';
     }
-    form.reset();
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+
+    setTimeout(() => {
+      window.location.assign(url.toString());
+    }, 900);
   });
+})();
+
+// Reescritura de enlaces/botones de "Contacto" y eliminación de sección de contacto
+// - Elimina la sección visible de contacto y cualquier iframe/formulario asociado
+// - Fuerza que todos los enlaces/botones de Contacto abran el Microsoft Form en nueva pestaña
+(function () {
+  const CONTACT_URL = 'https://forms.office.com/pages/responsepage.aspx?id=lgEthFu5DUGUZ8cnYw1BVSXCktbALEVEtFEHpv6pkQhUNEYxUU83TVdESU1NRVQ3ODQxMTdIOExQNi4u&origin=lprLink&route=shorturl';
+
+  const removeContactSection = () => {
+    // Eliminar contenedores conocidos
+    ['#contacto', '.contact-form', '.contacto-form', '.section-contacto', '#ms-form', '#ms-form-wrapper', '#ms-form-iframe']
+      .forEach((sel) => {
+        document.querySelectorAll(sel).forEach((el) => el.remove());
+      });
+  };
+
+  const normalize = (str) => (str || '').toString().toLowerCase().trim();
+
+  const shouldRewrite = (el) => {
+    const text = normalize(el.textContent);
+    const title = normalize(el.getAttribute && el.getAttribute('title'));
+    const aria = normalize(el.getAttribute && el.getAttribute('aria-label'));
+    const alt = normalize(el.getAttribute && el.getAttribute('alt'));
+    const id = normalize(el.id || '');
+    const cls = normalize(el.className || '');
+    const href = normalize(el.getAttribute && el.getAttribute('href'));
+
+    const containsContacto = (s) => s.includes('contacto') || s.includes('contact');
+
+    return (
+      containsContacto(text) ||
+      containsContacto(title) ||
+      containsContacto(aria) ||
+      containsContacto(alt) ||
+      containsContacto(id) ||
+      containsContacto(cls) ||
+      (href && (href.includes('#contacto') || href.includes('#contact')))
+    );
+  };
+
+  const rewriteElements = () => {
+    document.querySelectorAll('a, button').forEach((el) => {
+      if (!shouldRewrite(el)) return;
+
+      if (el.tagName.toLowerCase() === 'a') {
+        el.setAttribute('href', CONTACT_URL);
+        el.setAttribute('target', '_blank');
+        el.setAttribute('rel', 'noopener noreferrer');
+        el.removeAttribute('data-scroll');
+      } else {
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.open(CONTACT_URL, '_blank', 'noopener');
+        });
+      }
+    });
+  };
+
+  // Ejecutar al cargar
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      removeContactSection();
+      rewriteElements();
+    });
+  } else {
+    removeContactSection();
+    rewriteElements();
+  }
 })();
 
