@@ -168,7 +168,7 @@ a {
 }
 
 .brand-logo {
-  width: 28px;
+  width: 56px;
   height: auto;
   display: block;
 }
@@ -799,7 +799,7 @@ main {
   color: var(--color-text-soft);
   font-size: var(--font-size-body);
   line-height: 1.62;
-  text-align: center;
+  text-align: left;
 }
 
 .contacto-grid {
