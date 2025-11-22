@@ -804,9 +804,23 @@ main {
 
 .contacto-grid {
   display: grid;
-  gap: 60px;
+  gap: 48px;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.contact-page .section {
+  padding: 28px 0 34px;
+}
+
+.contact-page .section-head {
+  margin-bottom: 32px;
+}
+
+.contacto-copy {
+  padding: 32px;
+  display: grid;
+  gap: 12px;
 }
 
 .contacto-copy h2 {
@@ -821,38 +835,61 @@ main {
   max-width: 520px;
   font-size: var(--font-size-body-large);
   line-height: 1.68;
-  margin: 10 0 28px;
+  margin: 10px 0 28px;
 }
 
 .contacto-meta {
-  display: flex;
-  gap: 32px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.meta-card {
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.18));
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  display: grid;
+  gap: 6px;
 }
 
 .contacto-meta strong {
-    display: block;
-    font-weight: 600;
-    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: var(--font-size-card-title);
-    margin: 0 auto;
-    letter-spacing: -0.01em;
-    background: linear-gradient(135deg, var(--color-accent-warm), var(--color-secondary));
-    -webkit-background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
+  display: block;
+  font-weight: 600;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: var(--font-size-card-title);
+  margin: 0;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, var(--color-accent-warm), var(--color-secondary));
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-align: left;
 }
 
 .contacto-meta span {
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-body-large);
   line-height: 1.55;
+  color: var(--color-text);
+}
+
+.contacto-meta a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.contacto-meta a:hover,
+.contacto-meta a:focus {
+  color: var(--color-primary);
 }
 
 .contacto-form {
-  padding: 36px;
+  padding: 32px;
   display: grid;
   gap: 18px;
+  min-height: 500px;
 }
 
 .contacto-form label {
@@ -883,6 +920,11 @@ main {
 .contacto-form textarea {
   resize: vertical;
   min-height: 120px;
+}
+
+.contacto-form iframe {
+  min-height: 500px;
+  height: 100%;
 }
 
 .contacto-form .whatsapp {
@@ -1277,16 +1319,25 @@ main {
     padding: 30px 0;
   }
 
+  .contact-page .section {
+    padding: 26px 0 30px;
+  }
+
+  .contact-page .section-head {
+    margin-bottom: 28px;
+  }
+
   .contacto-grid {
-    gap: 40px;
+    gap: 32px;
   }
 
   .contacto-form {
-    padding: 28px;
+    padding: 24px;
+    min-height: 380px;
   }
 
   .contacto-form iframe {
-    min-height: 420px;
+    min-height: 380px;
   }
 
   .footer {
